@@ -1,6 +1,7 @@
 import type { InferGetStaticPropsType } from 'next';
 import { getProjects } from '../queries/projects';
 import Link from 'next/link';
+import { ProjectType } from '../types/shared';
 
 const Home = ({ projects }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
@@ -20,7 +21,7 @@ const Home = ({ projects }: InferGetStaticPropsType<typeof getStaticProps>) => {
 export default Home;
 
 export async function getStaticProps() {
-  const projects: Project[] = await getProjects();
+  const projects: ProjectType[] = await getProjects();
   return {
     props: { projects: projects },
   };

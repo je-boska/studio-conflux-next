@@ -6,6 +6,7 @@ export async function getProjects() {
     groq`*[_type == "project"] | order(order asc) {
       _id,
       title,
+      body,
       "slug": slug.current,
       "videoUrl": video.asset->url,
       "poster": poster.asset->url,
@@ -36,6 +37,7 @@ export async function getSingleProject(slug: string) {
     groq`*[_type == "project" && slug.current == "${slug}" ] | order(order asc) {
       _id,
       title,
+      body,
       "slug": slug.current,
       "videoUrl": video.asset->url,
       "poster": poster.asset->url,

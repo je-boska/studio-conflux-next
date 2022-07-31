@@ -1,20 +1,23 @@
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import React from 'react';
 import { getProjectPaths, getSingleProject } from '../../queries/projects';
+import BlockContent from '@sanity/block-content-to-react';
+import { ProjectType } from '../../types/shared';
 
 export default function Project({
-  project: { title, videoUrl, poster },
+  project: { title, body, videoUrl, poster },
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <div className='p-8'>
-      <h1 className='cursor-pointer'>{title}</h1>
+      <h1>{title}</h1>
+      {body ? <BlockContent blocks={body} /> : null}
       <video src={videoUrl} poster={poster} />
     </div>
   );
 }
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-  const project: Project = await getSingleProject(
+  const project: ProjectType = await getSingleProject(
     context!.params!.slug as string
   );
   return {

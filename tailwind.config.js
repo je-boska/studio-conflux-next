@@ -8,4 +8,5 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  files: ['types/block-content-to-react.d.ts', 'types/shared.d.ts'],
 };

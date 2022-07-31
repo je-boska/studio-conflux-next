@@ -24,7 +24,6 @@ export default function Project({
         animate='enter' // Animated state to variants.enter
         exit='exit' // Exit state (used later) to variants.exit
         transition={{ type: 'linear' }} // Set the transition to linear
-        className='p-8'
       >
         <Link href='/' scroll={false}>
           <h1 className='cursor-pointer'>Home</h1>

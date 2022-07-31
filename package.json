@@ -11,6 +11,7 @@
   "dependencies": {
     "@sanity/block-content-to-react": "^3.0.0",
     "@sanity/client": "^3.3.2",
+    "framer-motion": "^6.5.1",
     "groq": "^2.29.3",
     "next": "12.2.3",
     "react": "18.2.0",

@@ -23,7 +23,7 @@ const Home = ({ projects }: InferGetStaticPropsType<typeof getStaticProps>) => {
         className='relative'
       >
         <div className='fixed w-full text-center top-1/2 -translate-y-1/2 z-10'>
-          <h1 className='text-white uppercase text-2xl md:text-5xl xl:text-5xl tracking-[0.7rem]'>
+          <h1 className='text-white uppercase text-2xl md:text-5xl tracking-[0.7rem]'>
             {currentTitle}
           </h1>
         </div>

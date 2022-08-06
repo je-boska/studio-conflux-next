@@ -22,8 +22,10 @@ const Home = ({ projects }: InferGetStaticPropsType<typeof getStaticProps>) => {
         transition={{ type: 'linear' }}
         className='relative'
       >
-        <div className='fixed top-0 left-0'>
-          <h1 className='cursor-pointer'>{currentTitle}</h1>
+        <div className='fixed w-full text-center top-1/2 -translate-y-1/2 z-10'>
+          <h1 className='text-white uppercase text-2xl md:text-5xl xl:text-5xl tracking-[0.7rem]'>
+            {currentTitle}
+          </h1>
         </div>
         {projects.map((project) => (
           <Project

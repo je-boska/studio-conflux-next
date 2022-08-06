@@ -45,5 +45,6 @@ export async function getStaticProps() {
   const projects: ProjectType[] = await getProjects();
   return {
     props: { projects: projects },
+    revalidate: 60 * 60,
   };
 }

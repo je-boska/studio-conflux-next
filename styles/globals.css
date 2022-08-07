@@ -21,7 +21,7 @@
   }
 
   html {
-    @apply font-body;
+    @apply font-body bg-black;
   }
 
   .perspective-800 {

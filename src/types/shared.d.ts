@@ -8,3 +8,8 @@ export type ProjectType = {
   videoUrl: string;
   poster: string;
 };
+
+export type CurrentProjectType = {
+  title: string;
+  slug: string;
+};

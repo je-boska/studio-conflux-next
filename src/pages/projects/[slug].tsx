@@ -5,28 +5,20 @@ import BlockContent from '@sanity/block-content-to-react';
 import { ProjectType } from '../../types/shared';
 import Layout from '../../components/Layout';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { projectPageVariant } from '../../utils/transitions';
 
 export default function Project({
   project: { title, body, videoUrl, poster },
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout>
-      <motion.div
-        variants={projectPageVariant}
-        initial='hidden'
-        animate='enter'
-        exit='exit'
-        transition={{ type: 'linear' }}
-      >
+      <div className='text-white'>
         <Link href='/' scroll={false}>
           <h1 className='cursor-pointer'>Home</h1>
         </Link>
         <h1>{title}</h1>
         {body ? <BlockContent blocks={body} /> : null}
         <video src={videoUrl} poster={poster} />
-      </motion.div>
+      </div>
     </Layout>
   );
 }

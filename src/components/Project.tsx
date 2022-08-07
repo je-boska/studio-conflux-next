@@ -1,38 +1,46 @@
 import { Dispatch, RefObject, SetStateAction, useEffect, useRef } from 'react';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
-import { ProjectType } from '../types/shared';
+import { CurrentProjectType, ProjectType } from '../types/shared';
 
 export default function Project({
   project,
-  setCurrentTitle,
+  setCurrentProject,
 }: {
   project: ProjectType;
-  setCurrentTitle: Dispatch<SetStateAction<string | null | undefined>>;
+  setCurrentProject: Dispatch<SetStateAction<CurrentProjectType | null>>;
 }) {
   const ref: RefObject<HTMLDivElement> = useRef(null);
   const isInView = useInView(ref, { margin: '-40% 0px -40% 0px' });
-  const { scrollYProgress } = useScroll({
+  const { scrollYProgress: transformScrollProgress } = useScroll({
     target: ref,
-    offset: ['end center', 'center start'],
+    offset: ['end start', 'start end'],
   });
-  const rotateX = useTransform(scrollYProgress, [0, 1], [0, 35]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.7]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+  const { scrollYProgress: opacityScrollProgress } = useScroll({
+    target: ref,
+    offset: ['center end', 'center center'],
+  });
+  const rotateX = useTransform(transformScrollProgress, [0, 1], [45, -45]);
+  const scale = useTransform(transformScrollProgress, [0, 1], [1, 0.2]);
+  const opacity = useTransform(opacityScrollProgress, [0, 1], [0, 1]);
 
   useEffect(() => {
     if (isInView) {
-      const currentTitle = ref.current?.getAttribute('data-title');
-      setCurrentTitle(currentTitle);
+      const currentTitle = ref.current?.getAttribute('data-title')!;
+      const currentSlug = ref.current?.getAttribute('data-slug')!;
+      setCurrentProject({ title: currentTitle, slug: currentSlug });
+    } else {
+      setCurrentProject(null);
     }
-  }, [isInView, setCurrentTitle]);
+  }, [isInView, setCurrentProject]);
 
-  const { title, videoUrl, poster } = project;
+  const { title, slug, videoUrl, poster } = project;
 
   return (
-    <div className='h-screen flex flex-col justify-center perspective-800'>
+    <div className='w-full overflow-hidden h-screen flex flex-col justify-center perspective-800'>
       <motion.div
         ref={ref}
         data-title={title}
+        data-slug={slug}
         style={{ rotateX, scale, opacity }}
         className='h-3/4 flex justify-center align-middle'
       >

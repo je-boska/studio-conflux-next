@@ -2,39 +2,34 @@ import type { InferGetStaticPropsType } from 'next';
 import Layout from '../components/Layout';
 import Project from '../components/Project';
 import { getProjects } from '../queries/projects';
-import { ProjectType } from '../types/shared';
-import { homePageVariant } from '../utils/transitions';
-import { motion } from 'framer-motion';
+import { CurrentProjectType, ProjectType } from '../types/shared';
 import { useState } from 'react';
+import Link from 'next/link';
+import Hero from '../components/Hero';
 
 const Home = ({ projects }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const [currentTitle, setCurrentTitle] = useState<string | null | undefined>(
-    null
-  );
+  const [currentProject, setCurrentProject] =
+    useState<CurrentProjectType | null>({
+      title: '',
+      slug: '',
+    });
 
   return (
     <Layout>
-      <motion.div
-        variants={homePageVariant}
-        initial='hidden'
-        animate='enter'
-        exit='exit'
-        transition={{ type: 'linear' }}
-        className='relative'
-      >
-        <div className='fixed w-full text-center top-1/2 -translate-y-1/2 z-10'>
-          <h1 className='text-white uppercase text-2xl md:text-5xl tracking-[0.7rem]'>
-            {currentTitle}
-          </h1>
-        </div>
-        {projects.map((project) => (
-          <Project
-            key={project._id}
-            project={project}
-            setCurrentTitle={setCurrentTitle}
-          />
-        ))}
-      </motion.div>
+      <Hero />
+      <h2 className='w-full fixed text-white text-center uppercase text-2xl md:text-5xl tracking-[0.7rem] top-1/2 -translate-y-1/2 z-10'>
+        <Link href={`projects/${currentProject?.slug}`} scroll={false}>
+          <span className='cursor-pointer'>{currentProject?.title}</span>
+        </Link>
+      </h2>
+
+      {projects.map((project) => (
+        <Project
+          key={project._id}
+          project={project}
+          setCurrentProject={setCurrentProject}
+        />
+      ))}
     </Layout>
   );
 };

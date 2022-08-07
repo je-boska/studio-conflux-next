@@ -17,7 +17,7 @@ const Home = ({ projects }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <Layout>
       <Hero />
-      <h2 className='w-full fixed text-white text-center uppercase text-2xl md:text-5xl tracking-[0.7rem] top-1/2 -translate-y-1/2 z-10'>
+      <h2 className='w-full fixed text-center uppercase text-2xl md:text-5xl tracking-[0.7rem] top-1/2 -translate-y-1/2 z-10'>
         <Link href={`projects/${currentProject?.slug}`} scroll={false}>
           <span className='cursor-pointer'>{currentProject?.title}</span>
         </Link>

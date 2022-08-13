@@ -3,9 +3,11 @@ import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { CurrentProjectType, ProjectType } from '../types/shared';
 
 export default function Project({
+  first,
   project,
   setCurrentProject,
 }: {
+  first?: boolean;
   project: ProjectType;
   setCurrentProject: Dispatch<SetStateAction<CurrentProjectType | null>>;
 }) {
@@ -36,7 +38,10 @@ export default function Project({
   const { title, slug, videoUrl, poster } = project;
 
   return (
-    <div className='w-full overflow-hidden h-screen flex flex-col justify-center perspective-800'>
+    <div
+      id={first ? 'first-project' : undefined}
+      className='w-full overflow-hidden h-screen flex flex-col justify-center perspective-800'
+    >
       <motion.div
         ref={ref}
         data-title={title}

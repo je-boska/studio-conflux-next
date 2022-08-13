@@ -23,8 +23,9 @@ const Home = ({ projects }: InferGetStaticPropsType<typeof getStaticProps>) => {
         </Link>
       </h2>
 
-      {projects.map((project) => (
+      {projects.map((project, idx) => (
         <Project
+          first={idx === 0}
           key={project._id}
           project={project}
           setCurrentProject={setCurrentProject}

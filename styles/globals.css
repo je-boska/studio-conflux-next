@@ -39,4 +39,25 @@
       text-shadow: 20px 20px 20px rgba(255, 255, 255, 0.3);
     }
   }
+
+  /* Imprint styles */
+
+  .imprint {
+    @apply relative max-w-2xl mx-auto my-20;
+  }
+
+  .imprint p {
+    margin-bottom: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .imprint strong {
+    font-weight: bold;
+    margin-bottom: 0.8rem;
+    color: rgba(255, 255, 255, 1);
+  }
+
+  .imprint a {
+    color: rgb(104, 127, 255);
+  }
 }

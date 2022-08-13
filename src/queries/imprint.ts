@@ -1,8 +1,8 @@
 import sanityClient from '../utils/client';
 import groq from 'groq';
 
-export const getImpressum = async () => {
-  const impressum = await sanityClient.fetch(
+export const getImprint = async () => {
+  const imprint = await sanityClient.fetch(
     groq`*[_type == "page" && title == "Impressum"] {
       _id,
       title,
@@ -11,5 +11,5 @@ export const getImpressum = async () => {
     `
   );
 
-  return impressum[0];
+  return imprint[0].body;
 };

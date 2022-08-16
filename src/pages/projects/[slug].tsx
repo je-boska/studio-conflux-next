@@ -10,24 +10,16 @@ import PlayButton from '../../components/PlayButton';
 export default function Project({
   project: { title, body, videoUrl, poster },
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const video = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
     isPlaying ? video.current?.play() : video.current?.pause();
   }, [isPlaying]);
 
-  useEffect(() => {
-    if (video.current?.paused) {
-      setIsPlaying(false);
-    } else {
-      setIsPlaying(true);
-    }
-  }, []);
-
   return (
     <Layout>
-      <div className='absolute top-4 left-4 z-10'>
+      <div className='absolute bottom-4 md:bottom-0 md:top-4 left-4 z-10'>
         <Link href='/' scroll={false}>
           <h3 className='cursor-pointer text-2xl'>←</h3>
         </Link>
@@ -48,10 +40,9 @@ export default function Project({
             className='video absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 max-h-[60vh] cursor-pointer'
             src={videoUrl}
             poster={poster}
-            autoPlay
           />
           <PlayButton
-            className='absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 md:opacity-0 md:group-hover:opacity-100 transition-opacity'
+            className='absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2'
             isPlaying={isPlaying}
             setIsPlaying={setIsPlaying}
           />

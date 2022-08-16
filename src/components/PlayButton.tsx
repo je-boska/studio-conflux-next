@@ -13,9 +13,8 @@ export default function PlayButton({
   return (
     <button onClick={() => setIsPlaying(!isPlaying)} className={className}>
       <span
-        className={cx({
-          'opacity-0 group-hover:opacity-100 md:opacity-100 transition-opacity':
-            isPlaying,
+        className={cx('md:transition-opacity', {
+          'opacity-0 md:group-hover:opacity-100': isPlaying,
         })}
       >
         {isPlaying ? 'Pause' : 'Play'}

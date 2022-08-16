@@ -13,7 +13,7 @@ export default function Hero() {
         onClick={() => setShowAbout((showAbout) => !showAbout)}
         onMouseEnter={() => setShowAboutLink((showAboutLink) => !showAboutLink)}
         onMouseLeave={() => setShowAboutLink((showAboutLink) => !showAboutLink)}
-        className='absolute left-4 md:left-6 top-4 md:top-6 text-2xl tracking-[0.75rem] opacity-50 cursor-pointer'
+        className='absolute left-4 md:left-6 top-4 md:top-6 text-2xl tracking-widest sm:tracking-[0.75rem] opacity-50 cursor-pointer'
       >
         {showAboutLink ? (showAbout ? 'STUDIO CONFLUX' : 'ABOUT') : '?'}
       </p>
@@ -29,7 +29,7 @@ export default function Hero() {
         onMouseLeave={() =>
           setShowProjectsLink((showProjectsLink) => !showProjectsLink)
         }
-        className='absolute right-4 md:right-6 top-4 md:top-6 text-2xl tracking-[0.75rem] opacity-50 cursor-pointer'
+        className='absolute right-4 md:right-6 top-4 md:top-6 text-2xl tracking-widest sm:tracking-[0.75rem] opacity-50 cursor-pointer'
       >
         {showProjectsLink ? 'PROJECTS' : 'P'}
       </p>

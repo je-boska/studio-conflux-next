@@ -49,7 +49,7 @@ export default function Project({
         style={{ rotateX, scale, opacity }}
         className='h-3/4 flex justify-center align-middle'
       >
-        <video src={videoUrl} poster={poster} />
+        <video src={videoUrl} poster={poster ? poster : undefined} />
       </motion.div>
     </div>
   );

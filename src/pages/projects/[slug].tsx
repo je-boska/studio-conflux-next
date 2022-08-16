@@ -1,16 +1,29 @@
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { getProjectPaths, getSingleProject } from '../../queries/projects';
 import BlockContent from '@sanity/block-content-to-react';
 import { ProjectType } from '../../types/shared';
 import Layout from '../../components/Layout';
 import Link from 'next/link';
+import PlayButton from '../../components/PlayButton';
 
 export default function Project({
   project: { title, body, videoUrl, poster },
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [isPlaying, setIsPlaying] = useState(true);
   const video = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    isPlaying ? video.current?.play() : video.current?.pause();
+  }, [isPlaying]);
+
+  useEffect(() => {
+    if (video.current?.paused) {
+      setIsPlaying(false);
+    } else {
+      setIsPlaying(true);
+    }
+  }, []);
 
   return (
     <Layout>
@@ -26,17 +39,23 @@ export default function Project({
             {body ? <BlockContent blocks={body} /> : null}
           </div>
         </div>
-        <video
-          ref={video}
-          onClick={() => {
-            isPlaying ? video.current?.pause() : video.current?.play();
-            setIsPlaying(!isPlaying);
-          }}
-          className='video absolute top-1/2 -translate-y-1/2 w-full max-h-[60vh] cursor-pointer'
-          src={videoUrl}
-          poster={poster}
-          autoPlay
-        />
+        <div className='group'>
+          <video
+            ref={video}
+            onClick={() => {
+              setIsPlaying(!isPlaying);
+            }}
+            className='video absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 max-h-[60vh] cursor-pointer'
+            src={videoUrl}
+            poster={poster}
+            autoPlay
+          />
+          <PlayButton
+            className='absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 md:opacity-0 md:group-hover:opacity-100 transition-opacity'
+            isPlaying={isPlaying}
+            setIsPlaying={setIsPlaying}
+          />
+        </div>
       </div>
     </Layout>
   );

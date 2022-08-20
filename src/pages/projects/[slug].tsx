@@ -5,7 +5,7 @@ import BlockContent from '@sanity/block-content-to-react';
 import { ProjectType } from '../../types/shared';
 import Layout from '../../components/Layout';
 import Link from 'next/link';
-import PlayButton from '../../components/PlayButton';
+import PlayPauseButton from '../../components/PlayPauseButton';
 
 export default function Project({
   project: { title, body, videoUrl, poster },
@@ -41,8 +41,8 @@ export default function Project({
             src={videoUrl}
             poster={poster}
           />
-          <PlayButton
-            className='absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2'
+          <PlayPauseButton
+            className='absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-12 h-12 md:w-20 md:h-20'
             isPlaying={isPlaying}
             setIsPlaying={setIsPlaying}
           />

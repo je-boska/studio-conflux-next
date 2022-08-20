@@ -20,7 +20,7 @@ export default function Project({
   return (
     <Layout>
       <div className='absolute bottom-4 md:bottom-0 md:top-4 left-4 z-10'>
-        <Link href='/' scroll={false}>
+        <Link href='/'>
           <h3 className='cursor-pointer text-2xl'>←</h3>
         </Link>
       </div>

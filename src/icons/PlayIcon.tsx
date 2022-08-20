@@ -9,7 +9,7 @@ export default function PlayIcon() {
         xmlns='http://www.w3.org/2000/svg'
         xmlnsXlink='http://www.w3.org/1999/xlink'
         fill='#fff'
-        viewBox='0 0 330 330'
+        viewBox='-20 0 330 330'
         xmlSpace='preserve'
       >
         <path

@@ -3,9 +3,9 @@ import About from './About';
 import HeroFilter from './HeroFilter';
 
 export default function Hero() {
-  const [showAboutLink, setShowAboutLink] = useState(false);
-  const [showProjectsLink, setShowProjectsLink] = useState(false);
-  const [showAbout, setShowAbout] = useState(false);
+  const [showAboutLink, setShowAboutLink] = useState<boolean>(false);
+  const [showProjectsLink, setShowProjectsLink] = useState<boolean>(false);
+  const [showAbout, setShowAbout] = useState<boolean>(false);
 
   return (
     <div className='relative h-screen text-white'>
@@ -15,7 +15,11 @@ export default function Hero() {
         onMouseLeave={() => setShowAboutLink((showAboutLink) => !showAboutLink)}
         className='absolute left-4 md:left-6 top-4 md:top-6 text-2xl tracking-widest sm:tracking-[0.75rem] opacity-50 cursor-pointer'
       >
-        {showAboutLink ? (showAbout ? 'STUDIO CONFLUX' : 'ABOUT') : '?'}
+        {showAboutLink || showAbout
+          ? showAbout
+            ? 'STUDIO CONFLUX'
+            : 'ABOUT'
+          : '?'}
       </p>
       <p
         onClick={() => {

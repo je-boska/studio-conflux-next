@@ -40,7 +40,7 @@ export default function Project({
   return (
     <div
       id={first ? 'first-project' : undefined}
-      className='w-full h-[80vh] md:h-screen overflow-hidden flex flex-col justify-center perspective-800'
+      className='w-full h-screen overflow-hidden flex flex-col justify-center perspective-800'
     >
       <motion.div
         ref={ref}

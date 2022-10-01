@@ -28,8 +28,9 @@
     perspective: 800px;
   }
 
+  /* Hero */
+
   .hero-heading {
-    filter: url('#wavy');
     line-height: 200px;
     text-shadow: 10px 10px 10px rgba(255, 255, 255, 0.4);
   }

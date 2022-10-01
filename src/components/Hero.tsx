@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import cx from 'classnames';
+import React, { useEffect, useState } from 'react';
+import { checkIfFirefox } from '../utils/checkIfFirefox';
 import About from './About';
 import HeroFilter from './HeroFilter';
 
@@ -6,6 +8,12 @@ export default function Hero() {
   const [showAboutLink, setShowAboutLink] = useState<boolean>(false);
   const [showProjectsLink, setShowProjectsLink] = useState<boolean>(false);
   const [showAbout, setShowAbout] = useState<boolean>(false);
+  const [isFirefox, setIsFirefox] = useState<boolean>(false);
+
+  useEffect(() => {
+    const firefox = checkIfFirefox();
+    setIsFirefox(firefox);
+  }, []);
 
   return (
     <div className='relative h-screen text-white'>
@@ -41,7 +49,10 @@ export default function Hero() {
       ) : (
         <div className='absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 text-center'>
           <HeroFilter />
-          <h1 className='hero-heading mb-4 xl:mb-6 font-title text-3xl md:text-6xl xl:text-[5rem] leading-tight md:leading-tight xl:leading-tight'>
+          <h1
+            style={{ filter: `${isFirefox ? 'none' : 'url(#wavy)'}` }}
+            className='hero-heading mb-4 xl:mb-6 font-title text-3xl md:text-6xl xl:text-[5rem] leading-tight md:leading-tight xl:leading-tight'
+          >
             Studio Conflux
           </h1>
           <h2 className='text-base md:text-xl tracking-wider md:tracking-widest xl:tracking-[0.4rem] opacity-40'>

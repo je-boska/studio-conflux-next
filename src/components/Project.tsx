@@ -1,13 +1,16 @@
+import cx from 'classnames';
 import { Dispatch, RefObject, SetStateAction, useEffect, useRef } from 'react';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { CurrentProjectType, ProjectType } from '../types/shared';
 
 export default function Project({
   first,
+  last,
   project,
   setCurrentProject,
 }: {
   first?: boolean;
+  last?: boolean;
   project: ProjectType;
   setCurrentProject: Dispatch<SetStateAction<CurrentProjectType | null>>;
 }) {
@@ -40,7 +43,13 @@ export default function Project({
   return (
     <div
       id={first ? 'first-project' : undefined}
-      className='w-full h-screen overflow-hidden flex flex-col justify-center perspective-800'
+      className={cx(
+        'w-full overflow-hidden flex flex-col justify-center perspective-800',
+        {
+          'h-[50vh] md:h-[80vh]': !last,
+          'h-screen': last,
+        }
+      )}
     >
       <motion.div
         ref={ref}

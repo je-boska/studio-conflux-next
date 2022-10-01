@@ -6,6 +6,7 @@ import { ProjectType } from '../../types/shared';
 import Layout from '../../components/Layout';
 import Link from 'next/link';
 import PlayPauseButton from '../../components/PlayPauseButton';
+import Meta from '../../components/Meta';
 
 export default function Project({
   project: { title, body, videoUrl, poster },
@@ -19,6 +20,7 @@ export default function Project({
 
   return (
     <Layout>
+      <Meta title={title} />
       <div className='absolute bottom-4 md:bottom-0 md:top-4 left-4 z-10'>
         <Link href='/'>
           <h3 className='cursor-pointer text-2xl'>←</h3>

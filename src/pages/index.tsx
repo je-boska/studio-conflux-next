@@ -6,6 +6,7 @@ import { CurrentProjectType, ProjectType } from '../types/shared';
 import { useState } from 'react';
 import Link from 'next/link';
 import Hero from '../components/Hero';
+import Meta from '../components/Meta';
 
 const Home = ({ projects }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [currentProject, setCurrentProject] =
@@ -16,6 +17,7 @@ const Home = ({ projects }: InferGetStaticPropsType<typeof getStaticProps>) => {
 
   return (
     <Layout>
+      <Meta title='Sound Design, Composition & Music Production' />
       <Hero />
       <h2 className='w-full fixed text-center uppercase text-2xl md:text-5xl tracking-[0.7rem] top-1/2 -translate-y-1/2 z-10'>
         <Link href={`projects/${currentProject?.slug}`}>
@@ -29,6 +31,7 @@ const Home = ({ projects }: InferGetStaticPropsType<typeof getStaticProps>) => {
           key={project._id}
           project={project}
           setCurrentProject={setCurrentProject}
+          last={idx === projects.length - 1}
         />
       ))}
     </Layout>

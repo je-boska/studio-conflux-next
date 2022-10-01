@@ -24,7 +24,6 @@ export default function Hero() {
       <p
         onClick={() => {
           const firstProject = document.querySelector('#first-project')!;
-          console.log(firstProject.id);
           firstProject.scrollIntoView({ behavior: 'smooth' });
         }}
         onMouseEnter={() =>

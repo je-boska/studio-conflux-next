@@ -48,11 +48,7 @@ export default function Hero() {
         <About />
       ) : (
         <div className='absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 text-center'>
-          <HeroFilter />
-          <h1
-            style={{ filter: `${isFirefox ? 'none' : 'url(#wavy)'}` }}
-            className='hero-heading mb-4 xl:mb-6 font-title text-3xl md:text-6xl xl:text-[5rem] leading-tight md:leading-tight xl:leading-tight'
-          >
+          <h1 className='hero-heading mb-4 xl:mb-6 font-title text-3xl md:text-6xl xl:text-[5rem] leading-tight md:leading-tight xl:leading-tight'>
             Studio Conflux
           </h1>
           <h2 className='text-base md:text-xl tracking-wider md:tracking-widest xl:tracking-[0.4rem] opacity-40'>

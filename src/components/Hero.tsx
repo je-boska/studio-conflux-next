@@ -1,8 +1,6 @@
-import cx from 'classnames';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { checkIfFirefox } from '../utils/checkIfFirefox';
 import About from './About';
-import HeroFilter from './HeroFilter';
 
 export default function Hero() {
   const [showAboutLink, setShowAboutLink] = useState<boolean>(false);

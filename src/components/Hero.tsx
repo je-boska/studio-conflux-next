@@ -1,17 +1,10 @@
-import { useEffect, useState } from 'react';
-import { checkIfFirefox } from '../utils/checkIfFirefox';
 import About from './About';
+import { useState } from 'react';
 
 export default function Hero() {
   const [showAboutLink, setShowAboutLink] = useState<boolean>(false);
   const [showProjectsLink, setShowProjectsLink] = useState<boolean>(false);
   const [showAbout, setShowAbout] = useState<boolean>(false);
-  const [isFirefox, setIsFirefox] = useState<boolean>(false);
-
-  useEffect(() => {
-    const firefox = checkIfFirefox();
-    setIsFirefox(firefox);
-  }, []);
 
   return (
     <div className='relative h-screen text-white'>

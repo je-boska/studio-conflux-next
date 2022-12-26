@@ -2,7 +2,6 @@ import BlockContent, {
   BlockContentProps,
 } from '@sanity/block-content-to-react';
 import Link from 'next/link';
-import React from 'react';
 import Meta from '../components/Meta';
 import { getImprint } from '../queries/imprint';
 

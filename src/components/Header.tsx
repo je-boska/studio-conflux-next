@@ -14,17 +14,13 @@ export function Header() {
   }
 
   return (
-    <header className="flex items-center justify-between px-4 py-6 sm:px-6 lg:px-8">
-      <h1 className="font-title text-2xl tracking-widest opacity-80">
-        STUDIO CONFLUX
-      </h1>
-
+    <header className="flex justify-center px-4 py-6 sm:px-6 lg:px-8">
       <button
         onClick={handleOpen}
-        className="text-xl tracking-widest opacity-50 hover:opacity-100 transition-opacity cursor-pointer"
+        className="font-title text-[calc(100vw/24)] sm:text-2xl tracking-widest whitespace-nowrap opacity-80 hover:opacity-100 transition-opacity cursor-pointer"
         aria-label="About Studio Conflux"
       >
-        ?
+        STUDIO CONFLUX
       </button>
 
       <dialog

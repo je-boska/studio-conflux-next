@@ -8,7 +8,7 @@ export async function getProjects() {
       body,
       "slug": slug.current,
       "videoUrl": video.asset->url,
-      "poster": poster.asset->url,
+      "poster": poster.asset->url + "?w=800&q=75&auto=format",
     }`
   );
 }

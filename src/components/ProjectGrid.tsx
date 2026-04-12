@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useRef } from "react";
-import { PortableText } from "@portabletext/react";
-import { PlayIcon } from "./PlayIcon";
-import type { Project } from "@/sanity";
+import { useRef } from 'react';
+import { PortableText } from '@portabletext/react';
+import { PlayIcon } from './PlayIcon';
+import type { Project } from '@/sanity';
 
 export function ProjectGrid({ projects }: { projects: Project[] }) {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -23,7 +23,7 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
     const video = videoRef.current;
     if (video) {
       video.pause();
-      video.removeAttribute("src");
+      video.removeAttribute('src');
       video.load();
     }
     dialogRef.current?.close();
@@ -31,26 +31,26 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 items-start">
+      <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 items-start'>
         {projects.map((project) => (
           <button
             key={project._id}
             onClick={() => handleCardClick(project)}
-            className="group text-left cursor-pointer flex flex-col"
+            className='group text-left cursor-pointer flex flex-col'
             aria-label={`Play video: ${project.title}`}
           >
-            <div className="relative aspect-video overflow-hidden">
+            <div className='relative aspect-video overflow-hidden'>
               <img
                 src={project.poster}
                 alt={project.title}
-                className="w-full h-full object-cover"
+                className='w-full h-full object-cover'
               />
               <PlayIcon />
             </div>
-            <h2 className="text-[22px] tracking-wide mt-3">
+            <h2 className='text-[22px] leading-tight tracking-wide mt-0.5 px-2 sm:px-0 uppercase'>
               {project.title}
             </h2>
-            <div className="text-[16px] opacity-60 mt-1 leading-relaxed">
+            <div className='text-[16px] opacity-60 px-2 sm:px-0 leading-tight'>
               <PortableText value={project.body} />
             </div>
           </button>
@@ -59,19 +59,19 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
 
       <dialog
         ref={dialogRef}
-        className="backdrop:bg-black/80 bg-transparent p-0 m-auto max-w-5xl w-full"
+        className='backdrop:bg-black/80 bg-transparent p-0 m-auto max-w-5xl w-full'
         onClick={(e) => {
           if (e.target === dialogRef.current) handleClose();
         }}
         onClose={handleClose}
       >
-        <div className="relative w-full aspect-video">
+        <div className='relative w-full aspect-video'>
           <video
             ref={videoRef}
-            className="w-full h-full"
+            className='w-full h-full'
             controls
             playsInline
-            preload="none"
+            preload='none'
           />
         </div>
       </dialog>

@@ -31,7 +31,7 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
 
   return (
     <>
-      <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 items-start'>
+      <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-y-8 gap-4 items-start'>
         {projects.map((project) => (
           <button
             key={project._id}
@@ -47,10 +47,10 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
               />
               <PlayIcon />
             </div>
-            <h2 className='text-[22px] leading-tight tracking-wide mt-0.5 px-2 sm:px-0 uppercase'>
+            <h2 className='font-subtitle opacity-80 text-lg tracking-wide leading-tight mt-0.5 px-2 sm:px-0 uppercase'>
               {project.title}
             </h2>
-            <div className='text-[16px] opacity-60 px-2 sm:px-0 leading-tight'>
+            <div className='text-lg opacity-80 px-2 sm:px-0 leading-tight'>
               <PortableText value={project.body} />
             </div>
           </button>

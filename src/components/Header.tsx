@@ -14,10 +14,10 @@ export function Header() {
   }
 
   return (
-    <header className='flex justify-center px-4 py-6 sm:px-6 lg:px-8'>
+    <header className='flex justify-center px-2 py-6 sm:px-6 lg:px-8'>
       <button
         onClick={handleOpen}
-        className='font-title text-[calc(100vw/11)] sm:text-4xl tracking-[20px] leading-12 whitespace-nowrap opacity-80 hover:opacity-100 transition-opacity cursor-pointer'
+        className='font-title text-lg sm:text-3xl md:text-4xl tracking-[20px] opacity-80 hover:opacity-100 transition-opacity cursor-pointer'
         aria-label='About Studio Conflux'
       >
         STUDIO CONFLUX

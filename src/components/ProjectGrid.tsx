@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { PortableText } from '@portabletext/react';
 import { PlayIcon } from './PlayIcon';
 import type { Project } from '@/sanity';
@@ -8,8 +8,10 @@ import type { Project } from '@/sanity';
 export function ProjectGrid({ projects }: { projects: Project[] }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const [activeProject, setActiveProject] = useState<Project | null>(null);
 
   function handleCardClick(project: Project) {
+    setActiveProject(project);
     const video = videoRef.current;
     if (video) {
       video.src = project.videoUrl;
@@ -50,9 +52,6 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
             <h2 className='font-subtitle opacity-80 text-lg tracking-wide leading-tight mt-0.5 px-2 sm:px-0 uppercase'>
               {project.title}
             </h2>
-            <div className='text-lg opacity-80 px-2 sm:px-0 leading-tight'>
-              <PortableText value={project.body} />
-            </div>
           </button>
         ))}
       </div>
@@ -74,6 +73,16 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
             preload='none'
           />
         </div>
+        {activeProject && (
+          <div className='mt-0.5 px-2 text-white'>
+            <h2 className='font-subtitle opacity-80 text-lg tracking-wide leading-tight uppercase'>
+              {activeProject.title}
+            </h2>
+            <div className='text-lg opacity-80 leading-tight'>
+              <PortableText value={activeProject.body} />
+            </div>
+          </div>
+        )}
       </dialog>
     </>
   );

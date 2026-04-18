@@ -2,6 +2,8 @@ import { getProjects } from '@/sanity';
 import { Header } from '@/components/Header';
 import { ProjectGrid } from '@/components/ProjectGrid';
 
+export const revalidate = 60;
+
 export default async function Home() {
   const projects = await getProjects();
 

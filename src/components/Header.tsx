@@ -23,7 +23,7 @@ export function Header() {
     <header className='flex justify-center px-2 py-4 sm:px-6 lg:px-8 xl:py-8'>
       <button
         onClick={handleOpen}
-        className='font-title text-2xl sm:text-4xl md:text-5xl xl:text-7xl opacity-90 hover:opacity-100 transition-opacity duration-500 cursor-pointer'
+        className='font-title text-3xl sm:text-4xl md:text-5xl xl:text-7xl opacity-90 hover:opacity-100 transition-opacity duration-500 cursor-pointer'
         aria-label='About Studio Conflux'
       >
         STUDIO CONFLUX

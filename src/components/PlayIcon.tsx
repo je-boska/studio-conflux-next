@@ -1,11 +1,11 @@
 export function PlayIcon() {
   return (
-    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 mix-blend-difference">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="#fff"
         viewBox="-20 0 330 330"
-        className="w-14 h-14 drop-shadow-lg"
+        className="w-14 h-14"
         aria-hidden="true"
       >
         <path

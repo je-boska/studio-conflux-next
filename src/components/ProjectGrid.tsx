@@ -22,18 +22,28 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
   }
 
   function handleClose() {
+    const dialog = dialogRef.current;
+    if (!dialog || dialog.hasAttribute('data-closing')) return;
+    videoRef.current?.pause();
+    dialog.setAttribute('data-closing', '');
+    setTimeout(() => {
+      dialog.removeAttribute('data-closing');
+      dialog.close();
+    }, 300);
+  }
+
+  function handleCleanup() {
     const video = videoRef.current;
     if (video) {
       video.pause();
       video.removeAttribute('src');
       video.load();
     }
-    dialogRef.current?.close();
   }
 
   return (
     <>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-8 items-start'>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-2 items-start'>
         {projects.map((project) => (
           <button
             key={project._id}
@@ -48,10 +58,10 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
                 className='w-full h-full object-cover'
               />
               <PlayIcon />
+              <h2 className='font-subtitle absolute top-0 left-0 right-0 pt-2 text-white mix-blend-difference text-sm sm:text-base xl:text-lg text-center leading-none uppercase whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-0 group-hover:delay-150'>
+                {project.title}
+              </h2>
             </div>
-            <h2 className='font-subtitle opacity-80 text-lg sm:text-xl leading-none mt-1 px-2 sm:px-0 uppercase whitespace-nowrap group-hover:opacity-100 transition-opacity'>
-              {project.title}
-            </h2>
           </button>
         ))}
       </div>
@@ -62,7 +72,11 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
         onClick={(e) => {
           if (e.target === dialogRef.current) handleClose();
         }}
-        onClose={handleClose}
+        onCancel={(e) => {
+          e.preventDefault();
+          handleClose();
+        }}
+        onClose={handleCleanup}
       >
         <div className='relative w-full aspect-video'>
           <video
@@ -74,7 +88,7 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
           />
         </div>
         {activeProject && (
-          <div className='mt-1 text-white'>
+          <div className='px-2 md:px-0 pt-1 text-white'>
             <h2 className='font-subtitle opacity-80 text-xl sm:text-2xl leading-none uppercase'>
               {activeProject.title}
             </h2>

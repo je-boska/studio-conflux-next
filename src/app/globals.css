@@ -47,31 +47,39 @@
 .font-title,
 .font-subtitle {
   font-variant-ligatures: discretionary-ligatures;
-  font-feature-settings: 'dlig' 1, 'ss01' 1;
+  font-feature-settings:
+    'dlig' 1,
+    'ss01' 1;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body);
+  letter-spacing: 0.05em;
 }
 
-/* Dialog animations */
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
+/* Dialog fade in/out */
 dialog[open] {
-  animation: fade-in 150ms ease-out;
+  opacity: 1;
+  transition: opacity 300ms ease-out;
 }
 
 dialog[open]::backdrop {
-  animation: fade-in 150ms ease-out;
+  opacity: 1;
+  transition: opacity 300ms ease-out;
+}
+
+@starting-style {
+  dialog[open],
+  dialog[open]::backdrop {
+    opacity: 0;
+  }
+}
+
+dialog[data-closing],
+dialog[data-closing]::backdrop {
+  opacity: 0;
 }
 
 /* Imprint page */

@@ -10,7 +10,7 @@ export default async function Home() {
   return (
     <main className='flex-1 w-full max-w-[1920px] mx-auto'>
       <Header />
-      <div className='pb-12 sm:px-4'>
+      <div>
         <ProjectGrid projects={projects} />
       </div>
     </main>

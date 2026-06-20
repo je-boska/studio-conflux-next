@@ -10,14 +10,20 @@ export function Header() {
   }
 
   function handleClose() {
-    dialogRef.current?.close();
+    const dialog = dialogRef.current;
+    if (!dialog || dialog.hasAttribute('data-closing')) return;
+    dialog.setAttribute('data-closing', '');
+    setTimeout(() => {
+      dialog.removeAttribute('data-closing');
+      dialog.close();
+    }, 300);
   }
 
   return (
-    <header className='flex justify-center px-2 py-6 sm:px-6 lg:px-8'>
+    <header className='flex justify-center px-2 py-2 sm:px-6 lg:px-8'>
       <button
         onClick={handleOpen}
-        className='font-title text-2xl sm:text-4xl md:text-5xl opacity-80 hover:opacity-100 transition-opacity cursor-pointer'
+        className='font-title text-2xl sm:text-4xl md:text-5xl opacity-90 hover:opacity-100 transition-opacity duration-500 cursor-pointer'
         aria-label='About Studio Conflux'
       >
         STUDIO CONFLUX
@@ -29,7 +35,10 @@ export function Header() {
         onClick={(e) => {
           if (e.target === dialogRef.current) handleClose();
         }}
-        onClose={handleClose}
+        onCancel={(e) => {
+          e.preventDefault();
+          handleClose();
+        }}
       >
         <div className='p-8 font-body text-lg leading-7 xl:leading-8'>
           <p className='mb-4 opacity-90'>

@@ -33,7 +33,7 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
 
   return (
     <>
-      <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-y-8 gap-4 items-start'>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-8 items-start'>
         {projects.map((project) => (
           <button
             key={project._id}
@@ -49,7 +49,7 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
               />
               <PlayIcon />
             </div>
-            <h2 className='font-subtitle opacity-80 text-lg tracking-wide leading-tight mt-0.5 px-2 sm:px-0 uppercase'>
+            <h2 className='font-subtitle opacity-80 text-lg sm:text-xl leading-none mt-1 px-2 sm:px-0 uppercase whitespace-nowrap group-hover:opacity-100 transition-opacity'>
               {project.title}
             </h2>
           </button>
@@ -74,8 +74,8 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
           />
         </div>
         {activeProject && (
-          <div className='mt-0.5 px-2 text-white'>
-            <h2 className='font-subtitle opacity-80 text-lg tracking-wide leading-tight uppercase'>
+          <div className='mt-1 text-white'>
+            <h2 className='font-subtitle opacity-80 text-xl sm:text-2xl leading-none uppercase'>
               {activeProject.title}
             </h2>
             <div className='text-lg opacity-80 leading-tight'>

@@ -2,7 +2,7 @@ import { client } from "./client";
 
 export async function getProjects() {
   return client.fetch(
-    `*[_type == "project"] | order(order asc) {
+    `*[_type == "project"] | order(orderRank asc) {
       _id,
       title,
       body,
@@ -15,7 +15,7 @@ export async function getProjects() {
 
 export async function getProjectSlugs(): Promise<string[]> {
   return client.fetch(
-    `*[_type == "project"] | order(order asc).slug.current`
+    `*[_type == "project"] | order(orderRank asc).slug.current`
   );
 }
 

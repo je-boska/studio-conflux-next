@@ -47,8 +47,8 @@ export function Header() {
             and Jon Eirik Boska.
           </p>
           <p className='mb-4 opacity-90'>
-            Clients include Adidas, Converse, Rimowa, Tom Ford, Acqua Di Parma,
-            Siematic, 032c, GQ Germany and Wallpaper Magazine.
+            Clients include Adidas, Fendi, Converse, Rimowa, Tom Ford, Acqua Di
+            Parma, Siematic, 032c, GQ Germany and Wallpaper Magazine.
           </p>
           <div className='mb-4'>
             <p className='opacity-90'>philipp@studioconflux.com</p>

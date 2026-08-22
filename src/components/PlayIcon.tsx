@@ -1,6 +1,6 @@
 export function PlayIcon() {
   return (
-    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 mix-blend-difference">
+    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-difference">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="#fff"

@@ -58,7 +58,7 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
                 className='w-full h-full object-cover'
               />
               <PlayIcon />
-              <h2 className='font-subtitle absolute top-0 left-0 right-0 pt-2 text-white mix-blend-difference text-sm sm:text-base xl:text-lg text-center leading-none uppercase whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-0 group-hover:delay-150'>
+              <h2 className='font-subtitle absolute top-0 left-0 right-0 pt-2 text-white mix-blend-difference text-sm sm:text-base xl:text-lg text-center leading-none uppercase whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-500'>
                 {project.title}
               </h2>
             </div>

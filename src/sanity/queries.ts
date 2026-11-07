@@ -9,6 +9,9 @@ export async function getProjects() {
       "slug": slug.current,
       "videoUrl": video.asset->url,
       "poster": poster.asset->url + "?w=800&q=75&auto=format",
+      "posterLarge": poster.asset->url + "?w=1600&q=75&auto=format",
+      "hotspot": poster.hotspot{x, y},
+      "portrait": coalesce(portrait, false),
     }`
   );
 }

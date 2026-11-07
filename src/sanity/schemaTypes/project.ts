@@ -35,6 +35,14 @@ export const project = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'portrait',
+      title: 'Portrait tile',
+      description:
+        'Show this project as a tall tile spanning two rows in the grid.',
+      type: 'boolean',
+      initialValue: false,
+    }),
+    defineField({
       name: 'body',
       title: 'Body',
       type: 'array',

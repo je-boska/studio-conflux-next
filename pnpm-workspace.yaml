@@ -4,3 +4,10 @@ allowBuilds:
   sharp: true
   unrs-resolver: true
   esbuild: true
+overrides:
+  # Security: transitive pins under @sanity/cli (@vercel/frameworks, @module-federation/dts-plugin)
+  js-yaml@3: ^3.15.2
+  smol-toml@1: ^1.9.1
+  undici@7: ^7.30.2
+  # Security: @oclif/core (Sanity CLI) still requires minimatch ^10; patched in 11
+  minimatch@10: ^11.0.5
